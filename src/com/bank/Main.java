@@ -2,6 +2,7 @@ package com.bank;
 
 import com.bank.account.Account;
 import com.bank.account.AccountNumberGenerator;
+import com.bank.account.CurrentAccount;
 import com.bank.account.SavingAccount;
 import com.bank.exception.InsufficientBalanceException;
 
@@ -38,6 +39,9 @@ public class Main {
                 }
 
                 case 2: {
+                    Account account = new CurrentAccount();
+                    accounts.put(account.getAccountNo(), account);
+                    System.out.println("Current account created. Account No: "+ account.getAccountNo());
                     break;
                 }
 
@@ -101,6 +105,5 @@ public class Main {
                     System.out.println("Invalid choice. Try again.");
             }
         } while(option != 0);
-        //System.out.println(AccountNumberGenerator.generateAccountNumber());
     }
 }

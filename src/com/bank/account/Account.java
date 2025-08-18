@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class Account {
     private String accountNo;
     private double balance;
-    private String accountType;
+    private final String accountType;
     private final List<Transaction> transactions;
 
     public Account(String accountType) {
@@ -40,10 +40,6 @@ public abstract class Account {
 
     public String getAccountType() {
         return accountType;
-    }
-
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
     }
 
     public List<Transaction> getTransactions() {
