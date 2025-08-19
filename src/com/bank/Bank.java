@@ -7,7 +7,7 @@ import com.bank.service.BankServiceImp;
 
 import java.util.Scanner;
 
-public class Main {
+public class Bank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         BankService bankService = new BankServiceImp();
@@ -21,7 +21,8 @@ public class Main {
             System.out.println("5. Deposit");
             System.out.println("6. Withdraw");
             System.out.println("7. Show Account Details");
-            System.out.println("8. Exit");
+            System.out.println("8. Transactions history");
+            System.out.println("0. Exit");
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
 
@@ -82,8 +83,13 @@ public class Main {
                         Account a = bankService.getAccount(accNo);
                         System.out.println(a != null ? a : "Account not found!");
                         break;
-
-                    case 8:
+                    case 8: {
+                        System.out.print("Enter Account Number: ");
+                        String accNoT = sc.next();
+                        bankService.showTranscations(accNoT);
+                        break;
+                    }
+                    case 0:
                         System.out.println("Exiting... Thank you!");
                         sc.close();
                         return;

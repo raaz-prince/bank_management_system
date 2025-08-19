@@ -12,10 +12,12 @@ public interface BankService {
     void transfer(String fromAcc, String toAcc, double amount) throws Exception;
 
     Customer addCustomer(String name, String phone, String address);
-    Customer getCustomer(int customerId);
+    Customer getCustomer(int customerId) throws Exception;
     void updateCustomer(int customerId, String name, String phone, String address) throws Exception;
     void deleteCustomer(int customerId) throws Exception;
 
     void listAccounts();
     void listCustomers();
+
+    void showTranscations(String accNoT) throws Exception;
 }

@@ -61,10 +61,10 @@ public class BankServiceImp implements BankService{
             throw new Exception("Account not found");
         try {
             account.withdraw(amount);
+            System.out.println("Withdrawal Successful. Balance: " + account.getBalance());
         } catch (InsufficientBalanceException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Withdrawal Successful. Balance: " + account.getBalance());
     }
 
     @Override
@@ -83,6 +83,14 @@ public class BankServiceImp implements BankService{
     }
 
     @Override
+    public void showTranscations(String accNoT) throws Exception{
+        Account account = accounts.get(accNoT);
+        if(account == null)
+            throw new Exception("Account not found");
+        account.getTransactions().forEach(System.out::println);
+    }
+
+    @Override
     public Customer addCustomer(String name, String phone, String address) {
         Customer c = new Customer(name, phone, address);
         customers.put(c.getCustomerId(), c);
@@ -91,8 +99,11 @@ public class BankServiceImp implements BankService{
     }
 
     @Override
-    public Customer getCustomer(int customerId) {
-        return customers.get(customerId);
+    public Customer getCustomer(int customerId) throws Exception {
+        Customer customer = customers.get(customerId);
+        if(customer == null)
+            throw new Exception("Customer doesn't exist");
+        return customer;
     }
 
     @Override

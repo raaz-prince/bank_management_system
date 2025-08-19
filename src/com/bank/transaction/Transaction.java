@@ -1,22 +1,23 @@
 package com.bank.transaction;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Transaction {
-    private LocalDate date;
+    private String date;
     private String type;
     private double amount;
     private double totalBalance;
 
     public Transaction(String type, double amount, double totalBalance) {
-        this.date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd:MM:yyyy HH:mm");
+        this.date = LocalDateTime.now().format(formatter);
         this.type = type;
         this.amount = amount;
         this.totalBalance = totalBalance;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
