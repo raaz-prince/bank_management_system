@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Account {
-    private String accountNo;
+    private final String accountNo;
     private double balance;
     private final String accountType;
     private final List<Transaction> transactions;
-    protected Customer customer;
+    private final Customer customer;
 
     public Account(String accountType, Customer customer) {
         this.accountNo = AccountNumberGenerator.generateAccountNumber();
@@ -29,10 +29,6 @@ public abstract class Account {
         return accountNo;
     }
 
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
-    }
-
     public double getBalance() {
         return balance;
     }
@@ -42,7 +38,7 @@ public abstract class Account {
     }
 
     public String getAccountType() {
-        return accountType;
+        return this.accountType;
     }
 
     public List<Transaction> getTransactions() {
@@ -56,11 +52,9 @@ public abstract class Account {
     @Override
     public String toString() {
         return """
-           Account{
-               accountNo=%s,
-               customer=%s
-           }
-           """.formatted(accountNo, customer);
+                Account{
+                    accountNo: %s,
+                    %s
+                }""".formatted(accountNo, customer);
     }
-
 }

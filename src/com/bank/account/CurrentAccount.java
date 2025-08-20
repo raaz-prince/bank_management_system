@@ -12,7 +12,7 @@ public class CurrentAccount extends Account{
         this.overdraftLimit = 1000;
     }
 
-    public CurrentAccount(double overdraftLimit, Customer customer){
+    public CurrentAccount(double overdraftLimit, Customer customer) {
         super("current account", customer);
         this.overdraftLimit = overdraftLimit;
     }
@@ -26,17 +26,17 @@ public class CurrentAccount extends Account{
     @Override
     public void withdraw(double amount) throws InsufficientBalanceException {
         if(super.getBalance() + overdraftLimit < amount) {
-            throw new InsufficientBalanceException("overdraft limit exceeded");
+            throw new InsufficientBalanceException("Overdraft Limit Reached");
         }
         super.setBalance(super.getBalance() - amount);
-        addTransaction(new Transaction("withdrawal", amount, super.getBalance()));
+        super.addTransaction(new Transaction("withdrawal", amount, super.getBalance()));
     }
 
     public double getOverdraftLimit() {
         return overdraftLimit;
     }
 
-    public void setOverdraftLimit(double overdraftLimit){
+    public void setOverdraftLimit(double overdraftLimit) {
         this.overdraftLimit = overdraftLimit;
     }
 }

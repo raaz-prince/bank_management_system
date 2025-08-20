@@ -56,11 +56,11 @@ public class Customer {
     public String toString() {
         return """
            Customer{
-               customerId=%d,
-               name='%s',
-               phone='%s',
-               address='%s',
-               kycVerified=%s
+               customerId= %d,
+               name= '%s',
+               phone= '%s',
+               address= '%s',
+               kycVerified= %s
            }
            """.formatted(customerId, name, phone, address, kycVerified);
     }
